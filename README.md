@@ -1,5 +1,7 @@
 ## Donut.py
 
+![Ascii donut art](./donut/Selection_250.png)
+
 There are two versions of this. A sane, normal one, and one that I compressed down to a single line of python code. I was largely inspired by the following two sources:
 - [This](https://www.youtube.com/watch?v=Xz2f-PtQAdk&t=98s) video about compressing Python to a single line
 - [This](https://www.a1k0n.net/2011/07/20/donut-math.html) well known blog about deriving the equations for a rotating torus
@@ -31,14 +33,12 @@ if L > 0 and 1/z > zbuffer[yp][xp]:
 	output[yp][xp] = ".,-~:;=!*#$@"[luminance_index]
 ```
 Creating a one liner here would require both checking `L` and using `L` in the loop's body. However, since the walrus operator also returns the value assigned, we don't even have to use the previous pattern (which can avoid unnecessary nesting). This gives us the following:
-<pre style="white-space: pre-wrap;">
 <code class="language-python">
 ((L := cp*ct*sb - ca*ct*sp - sa*st + cb*(ca*st - ct*sa*sp)) > 0 and 1/z > globals()["zb"][yp][xp]) and [globals()["zb"][yp].__setitem__(xp, 1/z), globals()["o"][yp].__setitem__(xp, ".,-~:;=!*#$@"[floor(L*8)])]
 </code>
-</pre>
 
 This may be a bit intimidating to read, but if we take it in parts, it's not so bad.
-`((L := ...) > 0 and 1/z > ... )` becomes the if statement (we can see the return of the walrus operator being in use here). We replace the original `if` statement with just the `and` keyword, as lambdas expect an expression. This works because of short circuiting, a compiler optimization that ignores the right side of the branch if the left side is false, effectively becoming an `if` statement. Everything after the second `and` and inside the brackets is what used to be the body of the if statement, which includes the usage of `L` once more. 
+`((L := ...) > 0 and 1/z > ... )` becomes the `if` statement (we can see the return of the walrus operator being in use here). We replace the original `if` statement with just the `and` keyword, as lambdas expect an expression. This works because of short circuiting, a compiler optimization that ignores the right side of the branch if the left side is false, effectively becoming an `if` statement. Everything after the second `and` and inside the brackets is what used to be the body of the if statement, which includes the usage of `L` once more. 
 In short, walrus operator saved my life and I owe it money now.
 
 ## dict.\_\_setitem\_\_()

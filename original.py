@@ -63,7 +63,7 @@ def render_frame(A, B):
         print()
 
 A, B = 0, 0
-for _ in range(100):
+while True:
     A += theta_spacing
     B += phi_spacing 
     render_frame(A, B)
