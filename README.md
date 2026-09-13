@@ -1,8 +1,8 @@
-## Donut.py
-
 <p align="center">
   <img src="./donut/Selection_250.png" alt="Ascii donut art">
 </p>
+
+## Donut.py
 
 There are two versions of this. A sane, normal one, and one that I compressed down to a single line of python code. I was largely inspired by the following two sources:
 - [This](https://www.youtube.com/watch?v=Xz2f-PtQAdk&t=98s) video about compressing Python to a single line
