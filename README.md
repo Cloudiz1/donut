@@ -4,15 +4,15 @@
 
 ## Donut.py
 
-There are two versions of this. A sane, normal one, and one that I compressed down to a single line of python code. I was largely inspired by the following two sources:
+There are two versions of this. A sane, normal one, and one that I compressed down to a single line of code. I was largely inspired by the following sources:
 - [This](https://www.youtube.com/watch?v=Xz2f-PtQAdk&t=98s) video about compressing Python to a single line
-- [This](https://www.a1k0n.net/2011/07/20/donut-math.html) well known blog about deriving the equations for a rotating torus
+- [This](https://www.a1k0n.net/2011/07/20/donut-math.html) well known blog deriving the equations for a rotating torus
 
-There are a few tricks I'd like to add to Python one liners that the video did not mention.
+There are a few tricks I'd like to add to Python one liners that the first video did not mention.
 
 ## The Walrus Operator
 
-The walrus operator `:=` allows you to define a variable inline and returns it. This is helpful in plenty of circumstances. I use both features prominently in the codebase, namely I was able to do the following transformation:
+The walrus operator `:=` allows you to define a variable inline and returns it. This is helpful in plenty of circumstances. I use both features in the codebase, namely I was able to do the following transformation:
 ```Python
 A = 0
 B = 0
@@ -49,4 +49,4 @@ I had this really unfortunate problem where I had to set the value of a global 2
 zbuffer[yp][xp] = 1/z
 output[yp][xp] = ".,-~:;=!*#$@"[luminance_index]
 ```
-a trivial transformation.
+trivial transformations.
