@@ -35,9 +35,9 @@ if L > 0 and 1/z > zbuffer[yp][xp]:
 	output[yp][xp] = ".,-~:;=!*#$@"[luminance_index]
 ```
 Creating a one liner here would require both checking `L` and using `L` in the loop's body. However, since the walrus operator also returns the value assigned, we don't even have to use the previous pattern (which can avoid unnecessary nesting). This gives us the following:
-<code class="language-python">
+```Python
 ((L := cp*ct*sb - ca*ct*sp - sa*st + cb*(ca*st - ct*sa*sp)) > 0 and 1/z > globals()["zb"][yp][xp]) and [globals()["zb"][yp].__setitem__(xp, 1/z), globals()["o"][yp].__setitem__(xp, ".,-~:;=!*#$@"[floor(L*8)])]
-</code>
+```
 
 This may be a bit intimidating to read, but if we take it in parts, it's not so bad.
 `((L := ...) > 0 and 1/z > ... )` becomes the `if` statement (we can see the return of the walrus operator being in use here). We replace the original `if` statement with just the `and` keyword, as lambdas expect an expression. This works because of short circuiting, a compiler optimization that ignores the right side of the branch if the left side is false, effectively becoming an `if` statement. Everything after the second `and` and inside the brackets is what used to be the body of the if statement, which includes the usage of `L` once more. 
